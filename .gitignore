@@ -1,0 +1,32 @@
+# Environment variables
+.env
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Large binary files (keep in reference folders but don't track)
+# Uncomment if you want to exclude PDFs from git:
+# *.pdf
+
+# Node modules (if any scripts are added)
+node_modules/
+
+# Python (if any scripts are added)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Generated images (optional - uncomment to exclude from git)
+# **/generated-images/*.png
+# **/generated-images/*.jpg
