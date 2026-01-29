@@ -5,7 +5,7 @@ Conduct deep research on the institution, site, and competitive landscape for Li
 ## Instructions
 
 1. **Read Intake Document**
-   - Load `/rfps/[active-proposal]/00-intake.md`
+   - Load `/rfps/[institution]-[year]/[institution]-[year]-intake.md`
    - Note key details: institution, location, deadline, themes
 
 2. **Research Areas** (cover all five):
@@ -53,10 +53,10 @@ Conduct deep research on the institution, site, and competitive landscape for Li
    - Note Mika's relevant prior experience (especially Japan residency 2016)
 
 4. **Create Output File**
-   - Save as `01-research.md` in the active proposal folder
+   - Save as `[institution]-[year]-research.md` (e.g., `kair-2026-research.md`)
    - Include source links for all findings
    - Highlight 3 key insights that should guide the proposal
 
 ## Output Location
 
-`/rfps/[active-proposal]/01-research.md`
+`/rfps/[institution]-[year]/[institution]-[year]-research.md`

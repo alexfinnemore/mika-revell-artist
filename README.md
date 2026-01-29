@@ -8,7 +8,7 @@ A document repository and AI workflow system for generating art proposals and re
 2. **Extract requirements**: Run `/rfp-intake`
 3. **Research**: Run `/rfp-research`
 4. **Ideate**: Chat, generate images, refine concepts
-5. **Write**: Fill in `/03-proposal/` files
+5. **Write**: Fill in `/proposal/` files
 6. **Submit & archive**: Run `/proposal-archive`
 
 ## Folder Structure
@@ -40,12 +40,12 @@ A document repository and AI workflow system for generating art proposals and re
 /rfps/kair-2026/
   └── reference/     <- Drop RFP PDFs here
 ```
-Run `/rfp-intake` to create `00-intake.md` with extracted requirements.
+Run `/rfp-intake` to create `kair-2026-intake.md` with extracted requirements.
 
 ### Phase 2: Research & Ideation
 This is iterative. You'll cycle between:
-- Reading research (`01-research.md`)
-- Noting ideas (`02-ideas.md`)
+- Reading research (`kair-2026-research.md`)
+- Noting ideas (`kair-2026-ideas.md`)
 - Generating concept images
 - Chatting with Claude about directions
 
@@ -54,7 +54,7 @@ Generated images are saved to `/generated-images/` with prompts tracked in `imag
 ### Phase 3: Writing
 When your concept is solid, fill in:
 ```
-/03-proposal/
+/proposal/
   ├── artist-statement.md   # Check word limit
   ├── motive.md             # Check word limit
   ├── work-proposal.md      # Main concept + materials

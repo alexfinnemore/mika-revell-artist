@@ -56,10 +56,10 @@ Parse RFP documents and extract structured requirements for Living Matter Studio
    - Note any connection to Mika's prior Japan residency (AIR 3331, 2016)
 
 4. **Create Output File**
-   - Save as `00-intake.md` in the active proposal folder
+   - Save as `[institution]-[year]-intake.md` (e.g., `kair-2026-intake.md`)
    - Use exact section headers above
    - Flag anything unclear or missing
 
 ## Output Location
 
-`/rfps/[active-proposal]/00-intake.md`
+`/rfps/[institution]-[year]/[institution]-[year]-intake.md`

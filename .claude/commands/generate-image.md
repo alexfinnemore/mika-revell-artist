@@ -6,7 +6,7 @@ Create concept images for proposals using the Gemini API.
 
 1. **Get Context**
    - Identify active proposal from `/rfps/`
-   - Read `00-intake.md` and `01-research.md` for site context
+   - Read `[institution]-[year]-intake.md` and `[institution]-[year]-research.md` for site context
    - Check existing images in `generated-images/images.json`
 
 2. **Prepare Prompt**
