@@ -85,11 +85,21 @@ class SwerkClient {
     return response.json();
   }
 
-  async listAssets(): Promise<SwerkAsset[]> {
-    const response = await this.fetch<AssetsResponse>(
-      `/api/assets?customerId=${this.customerId}`
-    );
+  async listAssets(options?: { tags?: string[] }): Promise<SwerkAsset[]> {
+    let url = `/api/assets?customerId=${this.customerId}`;
+
+    if (options?.tags && options.tags.length > 0) {
+      url += `&tags=${encodeURIComponent(options.tags.join(","))}`;
+    }
+
+    const response = await this.fetch<AssetsResponse>(url);
     return response.assets || [];
+  }
+
+  async deleteAsset(assetId: string): Promise<void> {
+    await this.fetch(`/api/assets/${assetId}`, {
+      method: "DELETE",
+    });
   }
 
   async getAsset(assetId: string): Promise<SwerkAsset> {

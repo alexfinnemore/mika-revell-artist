@@ -18,27 +18,56 @@ export async function GET(
   }
 }
 
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  try {
+    const { id } = await params;
+    await swerk.deleteAsset(id);
+    return new NextResponse(null, { status: 204 });
+  } catch (error) {
+    console.error("Failed to delete asset:", error);
+    return NextResponse.json(
+      { error: "Failed to delete asset" },
+      { status: 500 }
+    );
+  }
+}
+
 export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const { id } = await params;
-    const { tags } = await request.json();
+    const body = await request.json();
 
-    if (!tags || !Array.isArray(tags)) {
-      return NextResponse.json(
-        { error: "tags array is required" },
-        { status: 400 }
-      );
+    // Handle addTags/removeTags for incremental updates
+    if (body.addTags) {
+      await swerk.assignTagsByName(id, body.addTags);
+    }
+    if (body.removeTags) {
+      const currentTags = await swerk.getAssetTags(id);
+      const tagIdsToRemove = currentTags
+        .filter((t) => body.removeTags.includes(t.name))
+        .map((t) => t.id);
+      if (tagIdsToRemove.length > 0) {
+        await swerk.removeTagsFromAsset(id, tagIdsToRemove);
+      }
     }
 
-    const asset = await swerk.updateAssetTags(id, tags);
+    // Handle full tags replacement
+    if (body.tags && Array.isArray(body.tags)) {
+      await swerk.updateAssetTags(id, body.tags);
+    }
+
+    const asset = await swerk.getAsset(id);
     return NextResponse.json(asset);
   } catch (error) {
-    console.error("Failed to update asset tags:", error);
+    console.error("Failed to update asset:", error);
     return NextResponse.json(
-      { error: "Failed to update asset tags" },
+      { error: "Failed to update asset" },
       { status: 500 }
     );
   }
